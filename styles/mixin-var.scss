@@ -10,6 +10,12 @@ $accent-warning : #f0ad4e;
 // ==================
 // mixin
 // ==================
+@mixin col($width: 50%) {
+  float: left;
+  padding: 0 2rem 2rem;
+  width: $width;
+}
+
 @mixin jiggle($x){
   transform: perspective(500px) translate3d($x, 0, 0);
 }

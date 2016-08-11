@@ -25,9 +25,7 @@ html {
 }
 
 .col {
-  float: left;
-  padding: 2rem;
-  width: 50%;
+  @include col;
   @media (max-width: 786px) {
     float: none;
     width: 100%;
@@ -36,6 +34,10 @@ html {
       padding: 0 2rem;
     }
   }
+}
+
+.col-full {
+  @include col(100%);
 }
 
 .card {
@@ -49,16 +51,22 @@ html {
 // typography
 // ==================
 h1,
-h2 {
+h2,
+p {
   color: $header-color;
 }
 
-h1 {
-  margin-left: 2rem;
+h1 i {
+  color: rgba($header-color, .5);
+  font-weight: lighter;
 }
 
 .card h2 {
   width: 80%;
+}
+
+p {
+  font-size: 1.4rem;
 }
 
 // ==================
