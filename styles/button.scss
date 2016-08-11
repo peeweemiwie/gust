@@ -27,7 +27,6 @@ html {
 .col {
   @include col;
   @media (max-width: 786px) {
-    float: none;
     width: 100%;
     padding: 0 2rem 2rem;
     &:first-of-type {
