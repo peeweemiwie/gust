@@ -1,1 +1,126 @@
 // TODO: DEFINE YOUR BUTTON STYLES HERE
+// ==================
+// global
+// ==================
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f6f9fa;
+}
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 62.5%; // rem conversion
+}
+
+// ==================
+// main structure
+// ==================
+.main {
+  @include clearfix;
+  margin: 0 auto;
+  max-width: 100rem;
+}
+
+.col {
+  float: left;
+  padding: 2rem;
+  width: 50%;
+  @media (max-width: 786px) {
+    float: none;
+    width: 100%;
+    padding: 0 2rem 2rem;
+    &:first-of-type {
+      padding: 0 2rem;
+    }
+  }
+}
+
+.card {
+  @include clearfix;
+  background-color: $white;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+// ==================
+// typography
+// ==================
+h1,
+h2 {
+  color: $header-color;
+}
+
+h1 {
+  margin-left: 2rem;
+}
+
+.card h2 {
+  width: 80%;
+}
+
+// ==================
+// buttons
+// ==================
+.btn-primery {
+  @include btn-default($accent-primery, $white, right);
+}
+
+.btn-danger {
+  @include btn-default($accent-danger, $white, right);
+}
+
+.btn-warning {
+  @include btn-default($accent-warning, $white, right);
+}
+
+.btn-toggle {
+  @include btn-default($white, $accent-primery, right);
+  border: 1px solid $accent-primery;
+  margin-left: 1rem;
+}
+
+// ==================
+// others
+// ==================
+.email-form {
+  @include clearfix;
+}
+
+.text-input {
+  border: 0;
+  border-bottom: 1px solid $accent-primery;
+  display: block;
+  margin-bottom: 1rem;
+  padding: 1rem 1rem .5rem .5rem;
+  width: 100%;
+}
+
+.button-wrapper,
+.card h2 {
+  display: inline-block;
+}
+
+.button-wrapper {
+  @include clearfix;
+  float: right;
+  width: 20%;
+}
+
+.folded-paper-wrapper {
+  margin-bottom: 4rem !important;
+
+  .folded-paper-primery {
+    @include folded-paper($white, 2rem, $accent-primery);
+  }
+
+  .folded-paper-danger {
+    @include folded-paper($white, 2rem, $accent-danger);
+  }
+
+  .folded-paper-warning {
+    @include folded-paper($white, 2rem, $accent-warning);
+  }
+}

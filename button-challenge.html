@@ -10,7 +10,52 @@
     <div class="header"><button id="test-button">Enable</button></div>
 
     <!-- Feel free to change the button markup in any way you see fit. The provided javascript does require the 'new-button' id. -->
-    <button id="new-button" disabled>Your Button</button>
+    <div class="main">
+      <h1>Button Challenge <i>by Miwa Yagi</i></h1>
+      <div class="col">
+        <div class="card folded-paper-wrapper">
+            <h2>Button: Primery</h2>
+            <form class="email-form">
+              <input type="text" placeholder="Name" class="text-input">
+              <input type="text" placeholder="Email" class="text-input">
+              <button id="new-button" class="btn btn-primery" disabled>Submit</button>
+            </form>
+          <div class="folded-paper-primery"></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card folded-paper-wrapper">
+          <h2>Button: Danger</h2>
+          <div class="button-wrapper">
+            <button class="btn-toggle">Enable</button>
+            <button class="btn btn-danger" disabled>Danger</button>
+          </div>
+          <div class="folded-paper-danger"></div>
+        </div>
+
+        <div class="card folded-paper-wrapper">
+          <h2>Button: Warning</h2>
+          <div class="button-wrapper">
+            <button class="btn-toggle">Enable</button>
+            <button class="btn btn-warning" disabled>Warning</button>
+          </div>
+          <div class="folded-paper-warning"></div>
+        </div>
+      </div>
+    </div>
+
+<script>
+function readyFn() {
+  $('.btn-toggle').on('click', function() {
+    var $tartgetBtn = $(this).next('.btn')
+    $tartgetBtn.prop('disabled', function(_, value) { return ! value })
+    setToggleLabel($(this), $tartgetBtn);
+  });
+};
+
+$(readyFn);
+</script>
 
   </body>
 </html>

@@ -1,0 +1,93 @@
+// ==================
+// var : color
+// ==================
+$header-color: #1E2D3D;
+$white: #fff;
+$accent-primery : #0c8caa;
+$accent-danger  : #d9534f;
+$accent-warning : #f0ad4e;
+
+// ==================
+// mixin
+// ==================
+@mixin jiggle($x){
+  transform: perspective(500px) translate3d($x, 0, 0);
+}
+
+@keyframes animate-jiggle {
+  from {
+    @include jiggle(.3rem);
+  }
+  to {
+    @include jiggle(-.3rem);
+  }
+}
+
+@mixin animate-prop($duration, $iteration, $name) {
+  animation-duration: $duration;
+  animation-iteration-count: $iteration;
+  animation-name: $name;
+}
+
+@mixin transition-btn($ease) {
+  transition: background-position .2s $ease, color .2s $ease;
+}
+
+@mixin btn-default($bgColor, $color, $float, $padding: .7rem 1rem) {
+  @include transition-btn(ease-in);
+  background-image: linear-gradient(
+    to right,
+    $bgColor,
+    $bgColor 50%,
+    rgba($bgColor, .3) 50%,
+    rgba($bgColor, .3));
+  background-repeat: no-repeat;
+  background-size: 210%;
+  background-position: top left;
+  border: 0;
+  border-radius: 3px;
+  color: $color;
+  cursor: pointer;
+  display: flex;
+  float: $float;
+  justify-content: center;
+  margin: .5rem 0;
+  padding: $padding;
+  -webkit-appearance: none;
+
+  &:disabled {
+    @include transition-btn(ease-out);
+    background-position: top right;
+    color: rgba($color, .7);
+  }
+
+  &:disabled:hover {
+    @include animate-prop(.1s, 3, animate-jiggle)
+    cursor: not-allowed;
+  }
+}
+
+@mixin folded-paper($bg-color, $height, $border-color) {
+  @include  clearfix;
+  &:before,
+  &:after {
+    bottom: -#{$height};
+    content: "";
+    display: block;
+    height: $height;
+    position: absolute;
+  }
+  &:before {
+    background-color: $bg-color;
+    box-shadow: 1px 2px 2px 0 rgba($header-color, .1);
+    left: 0;
+    width: calc(100% - #{$height});
+  }
+  &:after {
+    border-right: $height solid transparent;
+    border-top: $height solid $border-color;
+    height: 0;
+    right: 0;
+    width: 0;
+  }
+}
